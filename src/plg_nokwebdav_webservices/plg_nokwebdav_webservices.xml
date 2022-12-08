@@ -6,11 +6,11 @@
 	<creationDate>June 2022</creationDate>
 	<copyright>(C) 2022 Norbert Kuemin</copyright>
 	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
-	<version>1.2.1</version>
+	<version>4.0.0</version>
 	<description>PLG_NOKWEBDAV_WEBSERVICES_XML_DESC</description>
 
 	<files>
-		<filename>nokwebdav.php</filename>
+		<filename>nokwebdav4.php</filename>
 		<filename>index.html</filename>
 	</files>
 

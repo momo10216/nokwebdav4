@@ -1,5 +1,0 @@
-admin
-api
-com_nokwebdav.xml
-language
-site

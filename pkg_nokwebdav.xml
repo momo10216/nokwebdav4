@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <extension type="package" version="4.0" method="upgrade">
-	<name>pkg_nokwebdav4</name>
-	<packagename>nokwebdav4</packagename>
+	<name>pkg_nokwebdav</name>
+	<packagename>nokwebdav</packagename>
 	<creationDate>26.05.2022</creationDate>
 	<packager>Norbert Kuemin</packager>
 	<copyright>(C) 2022 Open Source Matters. All rights reserved.</copyright>
@@ -16,15 +16,15 @@
 	<scriptfile>script.php</scriptfile>
 	<files>
 		<!-- The id for each extension is the element stored in the DB -->
-		<file type="component" id="com_nokwebdav">com_nokwebdav4.zip</file>
-		<file type="plugin" id="nokwebdav" group="webservices">plg_webservices_nokwebdav4.zip</file>
+		<file type="component" id="com_nokwebdav">com_nokwebdav.zip</file>
+		<file type="plugin" id="nokwebdav" group="webservices">plg_webservices_nokwebdav.zip</file>
 	</files>
 	<languages folder="language">
-		<language tag="en-GB">en-GB.pkg_nokwebdav4.sys.ini</language>
-		<language tag="de-DE">de-DE.pkg_nokwebdav4.sys.ini</language>
+		<language tag="en-GB">en-GB.pkg_nokwebdav.sys.ini</language>
+		<language tag="de-DE">de-DE.pkg_nokwebdav.sys.ini</language>
 	</languages>
 	<updateservers>
 		<!-- Note: No spaces or linebreaks allowed between the server tags -->
-		<server type="extension" name="Weblinks Update Site">http://kuem.in/joomlaupdate/pkg_nokwebdav4.xml</server>
+		<server type="extension" name="Weblinks Update Site">http://kuem.in/joomlaupdate/pkg_nokwebdav.xml</server>
 	</updateservers>
 </extension>

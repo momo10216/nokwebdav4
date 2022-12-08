@@ -1,4 +1,0 @@
-set debug socket,http,xml,httpauth,cleartext
-open "http://kuem.in/J32/components/com_nokwebdav/connector.php/test/"
-#open "http://localhost/J3/index.php/en/webdav"
-quit

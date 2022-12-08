@@ -1,3 +1,4 @@
 nokwebdav*.zip
 packages/*.zip
 .idea/
+*.zip

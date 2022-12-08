@@ -2,8 +2,13 @@
 
 SAVEIFS=$IFS
 IFS=""
+CHANGE_VERSION="Y"
 
 # Functions
+print_usage () {
+    echo "Usage: $(basename $0) [-n]"
+}
+
 replace_version () {
     # Arguments: filename, currentversion, newversion
     cat "${1}" | sed "s/<version>${2}<\/version>/<version>${3}<\/version>/g" > "${1}.new"
@@ -13,13 +18,13 @@ replace_version () {
 get_manifest () {
     # Arguments: element
     if [ -r "${1}.xml" ]; then
-    	MANIFEST_FILE="${1}.xml"
-    	return
+        MANIFEST_FILE="${1}.xml"
+        return
     else
-	for XMLFILE in "*.xml"; do
-	    MANIFEST_FILE="${XMLFILE}"
-	    return
-	done
+        for XMLFILE in "*.xml"; do
+            MANIFEST_FILE="${XMLFILE}"
+            return
+        done
     fi
 }
 
@@ -41,23 +46,43 @@ get_folders_from_package_list () {
     rm -f "${TMPFILE}"
 }
 
+
+# Read options
+while getopts 'n\?' OPTION; do
+    case "$OPTION" in
+        n)
+            CHANGE_VERSION="N"
+            ;;
+        ?)
+            print_usage
+            exit 1
+            ;;
+    esac
+done
+
 # Get root path
 ROOT_PATH="."
 if [ -r ../pkg_nokwebdav.xml ]; then ROOT_PATH=".."; fi
 
-# Enter version
 VERSION_CURRENT=$(grep "<version>" ${ROOT_PATH}/pkg_nokwebdav.xml | sed 's/\s//g' | sed 's/<[\/]*version>//g')
-echo -n "Current version '${VERSION_CURRENT}'. New version (leave empty for not changing): "
-read VERSION_NEW
-if [ -n "${VERSION_NEW}" -a "${VERSION_CURRENT}" != "${VERSION_NEW}" ]; then
-    replace_version "${ROOT_PATH}/pkg_nokwebdav.xml" "${VERSION_CURRENT}" "${VERSION_NEW}"
-    for DIR in ${ROOT_PATH}/src/*; do
-        for XMLFILE in ${DIR}/*.xml; do
-            if [ -w "${XMLFILE}" ]; then
-                replace_version "${XMLFILE}" "${VERSION_CURRENT}" "${VERSION_NEW}"
-            fi
+if [ "${CHANGE_VERSION}" != "N" ]; then
+    # Enter version
+    echo -n "Current version '${VERSION_CURRENT}'. New version (leave empty for not changing): "
+    read VERSION_NEW
+    if [ -n "${VERSION_NEW}" -a "${VERSION_CURRENT}" != "${VERSION_NEW}" ]; then
+        replace_version "${ROOT_PATH}/pkg_nokwebdav.xml" "${VERSION_CURRENT}" "${VERSION_NEW}"
+        for DIR in ${ROOT_PATH}/src/*; do
+            for XMLFILE in ${DIR}/*.xml; do
+                if [ -w "${XMLFILE}" ]; then
+                    replace_version "${XMLFILE}" "${VERSION_CURRENT}" "${VERSION_NEW}"
+                fi
+            done
         done
-    done
+    else
+        VERSION_NEW="${VERSION_CURRENT}"
+    fi
+else
+    VERSION_NEW="${VERSION_CURRENT}"
 fi
 
 # Create element zips
@@ -86,4 +111,3 @@ CMD="zip -rq \"${ZIPFILE}\" ${ZIP_ELEMENTS}"
 eval "${CMD}"
 
 IFS=$SAVEIFS
-

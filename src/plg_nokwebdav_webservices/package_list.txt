@@ -1,2 +1,3 @@
 plg_nokwebdav_webservices.xml
 language
+LICENSE
