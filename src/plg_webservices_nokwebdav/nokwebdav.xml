@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="4.2" type="plugin" group="webservices" method="upgrade">
+	<name>plg_webservices_nokwebdav</name>
+	<author>Norbert Kuemin</author>
+	<authorEmail>momo_102@bluemail.ch</authorEmail>
+	<creationDate>December 2022</creationDate>
+	<copyright>(C) 2022 Norbert Kuemin</copyright>
+	<license>http://www.gnu.org/copyleft/gpl.html GNU/GPL</license>
+	<version>4.0.0</version>
+	<description>PLG_WEBSERVICES_NOKWEBDAV_XML_DESC</description>
+
+	<files>
+		<filename plugin="nokwebdav">nokwebdav.php</filename>
+		<filename>index.html</filename>
+	</files>
+
+	<languages folder="language">
+		<language tag="en-GB">en-GB.plg_webservices_nokwebdav.sys.ini</language>
+		<language tag="de-DE">de-DE.plg_webservices_nokwebdav.sys.ini</language>
+	</languages>
+</extension>
