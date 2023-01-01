@@ -40,7 +40,7 @@ class PlgWebservicesNoKWebDAV extends CMSPlugin {
 		];
 
 		$routes = [
-			new Route(['GET'], 'v1/nokwebdav/file/:name/:file', 'nokwebdav.fileGet', ['name' => '([A-Za-z0-9-_]+)', 'file' => '(.*)'], $defaults),
+			new Route(['GET'], 'v1/nokwebdav/connector/:name/:reference', 'nokwebdav.connector', ['name' => '([A-Za-z0-9-_]+)', 'reference' => '(.*)'], $defaults),
 		];
 
 		$router->addRoutes($routes);
