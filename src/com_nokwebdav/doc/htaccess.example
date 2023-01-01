@@ -1,0 +1,25 @@
+#Solution 1 for PHP/CGI
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization},L]
+</IfModule>
+
+#Solution 2 for PHP/CGI
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteCond %{HTTP:Authorization} ^Basic.*
+	RewriteRule ^(.*) $1?Authorization=%{HTTP:Authorization} [QSA,C]
+	RequestHeader unset Authorization
+</IfModule>
+
+#Solution 3 for PHP/CGI
+CGIPassAuth on
+
+#Solution for mod_security
+<IfModule mod_security.c>
+  SecFilterEngine Off
+  SecFilterScanPOST Off
+</IfModule>
+<IfModule security2_module>
+    SecRuleEngine Off
+</IfModule>

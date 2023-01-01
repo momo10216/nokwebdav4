@@ -1,0 +1,1 @@
+curl -s -X GET --user username:password http://localhost/J4/api/index.php/v1/content/articles | python3 -m json.tool
