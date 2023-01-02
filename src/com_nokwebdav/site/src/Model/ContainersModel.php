@@ -55,7 +55,7 @@ class ContainersModel extends ListModel {
     }
 
     /**
-     * Method to get all fields whith their database field name and label.
+     * Method to get all fields whit their database field name and label.
      *
      * @return  DatabaseQuery   A DatabaseQuery object to retrieve the data set.
      *

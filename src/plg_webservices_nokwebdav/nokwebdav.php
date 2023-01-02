@@ -32,6 +32,12 @@ class PlgWebservicesNoKWebDAV extends CMSPlugin {
 	 * @since   4.0.0
 	 */
 	public function onBeforeApiRoute(&$router) {
+        $router->createCRUDRoutes(
+            'v1/nokwebdav/containers',
+            'containers',
+            ['component' => 'com_nokwebdav']
+        );
+
 		$defaults    = [
 			'component' => 'com_nokwebdav',
 			'type_alias' => 'com_nokwebdav.container',

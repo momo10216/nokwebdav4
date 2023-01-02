@@ -45,8 +45,6 @@
 	<api>
 		<files folder="api">
 			<folder>src</folder>
-			<filename>nokwebdav.php</filename>
-			<filename>controller.php</filename>
 		</files>
 	</api>
 

@@ -85,6 +85,9 @@ else
     VERSION_NEW="${VERSION_CURRENT}"
 fi
 
+#
+if [ ! -d "./packages" ]; then mkdir "./packages"; fi
+
 # Create element zips
 CURRENT_DIR="$(pwd)"
 cd "${ROOT_PATH}/src/"
